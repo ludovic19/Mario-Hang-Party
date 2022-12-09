@@ -1,0 +1,50 @@
+.wrapper{
+    width: 1350px;
+    height: 400px;
+    border: black solid 2px;
+    display: flex;
+}
+
+.indice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    border: salmon solid 2px;
+}
+.image{
+    width: 400px;
+    height: 300px;
+    border: red solid 2px;
+
+}
+.boutons{
+    width: 400px;
+    height: 300px;
+    border: green solid 2px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.btn{
+    width: 40px;
+    height: 30px;
+    border: BLACK solid 2px;
+    background-color: aqua;
+}
+/* /.btn::after{}/ */
+
+.motEtLvl{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    height: 100px;
+    border: red solid 2px;
+
+}
+
+.boutonNextLvl{
+    width: 60px;
+    height: 50px;
+    border: blue solid 2px;
+}
