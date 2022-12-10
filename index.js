@@ -1,6 +1,7 @@
 const ListeMotFacile = [
   { mot: "CHEVAL", indice: "Animal a sabot" },
   { mot: "SABRE", indice: "Arme tranchante" },
+  { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
 ];
 const btn = document.querySelectorAll(".boutons .btn");
 let nbrEssai = 5;
@@ -25,7 +26,7 @@ btn.forEach((elem) => {
       const checkLettre = document.querySelectorAll(".mots p");
       let nbrLettreErreur = 0
       checkLettre.forEach((element) => {
-        if (element.innerHTML == elem.innerHTML) {element.style.backgroundColor = "White";} 
+        if (element.innerHTML == elem.innerHTML) {element.style.color = "Black";} 
         else {nbrLettreErreur++}
         });
 
@@ -55,6 +56,6 @@ function demarrageJeuNiveau1() {
     const lettre = document.createElement("p");
     document.querySelector(".mots").appendChild(lettre);
     lettre.innerHTML = elem;
-    lettre.style.backgroundColor = "Black";
+    lettre.style.color = "White";
   });
 }

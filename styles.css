@@ -112,3 +112,11 @@ width: 100%;
     align-items: center;
     gap: 2px;
 }
+
+.mots p{
+    display: flex;
+    justify-content: center;
+    align-items: bottom;
+    padding: 10px;
+    border-bottom: black solid 1px;
+}
