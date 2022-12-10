@@ -21,4 +21,12 @@
   btnStart.addEventListener('click',function (){
    const sectionStart = document.querySelector(".start")
    sectionStart.remove()
+   demarrageJeuNiveau1()
   })
+
+  function demarrageJeuNiveau1 (){
+    let nbreAleatoire = Math.floor(Math.random()*ListeMotFacile.length) 
+    let indice = document.querySelector(".indice p")
+    indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`
+    
+  }
