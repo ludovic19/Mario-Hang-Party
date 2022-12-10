@@ -10,7 +10,7 @@ function restartTouche(){
 }
 
 function restartMot(){
-    let paragraphe = document.querySelectorAll('.mot')
+    let paragraphe = document.querySelectorAll('.mots p')
     paragraphe.forEach((elem) => elem.remove())
         ;}
 
