@@ -10,9 +10,8 @@
   const btn = document.querySelectorAll(".boutons .btn")
   btn.forEach((elem)=>{
     elem.addEventListener('click',function (){
-        console.log(elem.className)
-     test = elem.className  
-     if(test = "btn inactif"){elem.className = "btnactif"}
+     statut = elem.className  
+     if(statut = "btn inactif"){elem.className = "btnactif"}
      else{elem.className = "btn inactif"}
     })
   })
@@ -28,5 +27,6 @@
     let nbreAleatoire = Math.floor(Math.random()*ListeMotFacile.length) 
     let indice = document.querySelector(".indice p")
     indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`
-    
+    let lettreDuMot = ListeMotFacile[nbreAleatoire].mot.split('')
+
   }
