@@ -33,14 +33,13 @@ function restartMot() {
 btn.forEach((elem) => {
   elem.addEventListener("click", function () {
     statut = elem.className;
-    if (statut = "btn inactif") {
+    const checkLettre = document.querySelectorAll(".mots p");
+    let nbrLettreErreur = 0;
+    if (statut == "btn inactif") {
       elem.className = "btnactif";
-
-      const checkLettre = document.querySelectorAll(".mots p");
-      let nbrLettreErreur = 0;
       checkLettre.forEach((element) => {
         if (element.innerHTML == elem.innerHTML) {
-          element.style.color = "Black";
+          element.style.visibility = "visible";
         } else {
           nbrLettreErreur++;
         }
@@ -50,7 +49,7 @@ btn.forEach((elem) => {
         nbrEssai--;
       }
     } 
-    else if(statut = "btnactif") {
+    if(statut == "btnactif") {
         alert("bouton déjà cliquer")
     }
 
@@ -59,10 +58,13 @@ btn.forEach((elem) => {
       alert("Perdu");
       demarrageJeuNiveau1();
     }
-
-    // paragraphe.forEach((elem)=> {if(elem.style.color = "Black"){nbrLettreFind++}})
-    // if(nbrLettreFind == paragraphe.length)
-    // {alert("gagné"); demarrageJeuNiveau2()}
+    let nbrLettreFind=0
+    const paragraphe = document.querySelectorAll(".mots p");
+    paragraphe.forEach((elem)=> {if(elem.style.visibility === "visible"){nbrLettreFind++}})
+    console.log(nbrLettreFind)
+    console.log(paragraphe.length)
+    if(nbrLettreFind == paragraphe.length)
+    {alert("gagné"); demarrageJeuNiveau2()}
   });
 });
 
@@ -87,7 +89,7 @@ function demarrageJeuNiveau1() {
     const lettre = document.createElement("p");
     document.querySelector(".mots").appendChild(lettre);
     lettre.innerHTML = elem;
-    lettre.style.color = "White";
+    lettre.style.visibility = "hidden";
   });
 }
 }
