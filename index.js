@@ -5,14 +5,14 @@ const ListeMotFacile = [
 ];
 
 const ListeMotMoyen = [
-    { mot: "CHEVAL", indice: "Animal a sabot" },
-    { mot: "SABRE", indice: "Arme tranchante" },
-    { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
-]
+  { mot: "CHEVAL", indice: "Animal a sabot" },
+  { mot: "SABRE", indice: "Arme tranchante" },
+  { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+];
 
 const btn = document.querySelectorAll(".boutons .btn");
 const paragraphe = document.querySelectorAll(".mots p");
-const nbrVie = document.querySelector(".vie p")
+const nbrVie = document.querySelector(".vie p");
 let nbrEssai = 5;
 let nbrLettreFind = 0;
 
@@ -25,6 +25,7 @@ function restartTouche() {
 }
 
 function restartMot() {
+  const paragraphe = document.querySelectorAll(".mots p");
   paragraphe.forEach((elem) => elem.remove());
 }
 
@@ -51,7 +52,7 @@ btn.forEach((elem) => {
       elem.className = "btn inactif";
     }
 
-    nbrVie.innerHTML = nbrEssai
+    nbrVie.innerHTML = nbrEssai;
     if (nbrEssai == 0) {
       alert("Perdu");
       demarrageJeuNiveau1();
@@ -78,7 +79,6 @@ function demarrageJeuNiveau1() {
   indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`;
   let lettreDuMot = ListeMotFacile[nbreAleatoire].mot.split("");
   lettreDuMot.forEach((elem) => {
-
     const lettre = document.createElement("p");
     document.querySelector(".mots").appendChild(lettre);
     lettre.innerHTML = elem;
@@ -86,6 +86,6 @@ function demarrageJeuNiveau1() {
   });
 }
 
-function demarrageJeuNiveau2(){
-    let nbreAleatoire = Math.floor(Math.random() * ListeMotMoyen.length);
+function demarrageJeuNiveau2() {
+  let nbreAleatoire = Math.floor(Math.random() * ListeMotMoyen.length);
 }
