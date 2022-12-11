@@ -13,9 +13,16 @@ const ListeMotMoyen = [
   { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
 ];
 
+const ListeMotDur = [
+    { mot: "ANE", indice: "Animal a sabot" },
+    { mot: "SABRE", indice: "Arme tranchante" },
+    { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+  ];
+  
 const btn = document.querySelectorAll(".boutons .btn");
 const nbrVie = document.querySelector(".vie p");
-
+const level = document.querySelector(".niveauActuel");
+const temps = document.querySelector(".image p");
 let nbrLettreFind = 0;
 // Fonction qui remet toutes les lettres de l'alphabet à inactif après une partie
 // class btnactif c'est les boutons cliquer
@@ -27,14 +34,11 @@ function restartTouche() {
     }
   });
 }
-
-
 //Fonction qui supprime le mot existant (la création du nouveau mot est dans la fonction demarrageJeuNiveau)
 function restartMot() {
   const paragraphe = document.querySelectorAll(".mots p");
   paragraphe.forEach((elem) => elem.remove());
 }
-
 
 // EventListner sur les btn des lettres de l'alphabet
 // Ca check la class du btn
@@ -64,22 +68,28 @@ btn.forEach((elem) => {
       if (nbrLettreErreur == checkLettre.length) {
         nbrEssai--;
       }
-    } 
-    if(statut == "btnactif") {
-        alert("bouton déjà cliquer")
+    }
+    if (statut == "btnactif") {
+      alert("bouton déjà cliquer");
     }
 
     nbrVie.innerHTML = nbrEssai;
     if (nbrEssai == 0) {
       alert("Perdu");
-      demarrageJeuNiveau1();
+      demarrageJeuNiveau("lose");
     }
 
-    let nbrLettreFind=0
+    let nbrLettreFind = 0;
     const paragraphe = document.querySelectorAll(".mots p");
-    paragraphe.forEach((elem)=> {if(elem.style.color === "black"){nbrLettreFind++}})
-    if(nbrLettreFind == paragraphe.length)
-    {alert("gagné"); demarrageJeuNiveau2()}
+    paragraphe.forEach((elem) => {
+      if (elem.style.color === "black") {
+        nbrLettreFind++;
+      }
+    });
+    if (nbrLettreFind == paragraphe.length) {
+      alert("gagné");
+      demarrageJeuNiveau("win");
+    }
   });
 });
 
@@ -88,7 +98,7 @@ const btnStart = document.querySelector(".begin");
 btnStart.addEventListener("click", function () {
   const sectionStart = document.querySelector(".start");
   sectionStart.remove();
-  demarrageJeuNiveau1();
+  demarrageJeuNiveau("lose");
 });
 
 //Fonction pour démarrer le jeu au niveau 1 avec l'array de mot ListeMotFacile
@@ -97,41 +107,42 @@ btnStart.addEventListener("click", function () {
 // Split ce mot ce qui me retourne une nouvelle array LettreduMot
 // et crée un p dans la class .mots avec chaque lettre
 // les lettres ont la color white pour pas les voir pour l'instant (on peut voir pour hidden/visible)
-function demarrageJeuNiveau1() {
+function demarrageJeuNiveau(winoulose) {
   restartTouche();
   restartMot();
-  nbrEssai = 5
+  nbrEssai = 5;
+  temps.innerHTML = 30
+  setInterval(timer,1000)
+  listeDeMot = ListeMotFacile
   nbrVie.innerHTML = nbrEssai;
-  let nbreAleatoire = Math.floor(Math.random() * ListeMotFacile.length);
+  if(winoulose == "win"){
+    if (level.innerHTML == 1){listeDeMot = ListeMotMoyen;level.innerHTML = 2}
+    else if (level.innerHTML == 2){listeDeMot = ListeMotDur;level.innerHTML = 3}
+  }
+  else {listeDeMot = ListeMotFacile;level.innerHTML = 1}
+  let nbreAleatoire = Math.floor(Math.random() * listeDeMot.length);
   let indice = document.querySelector(".indice p");
-  if(indice){
-  indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`;
-  let lettreDuMot = ListeMotFacile[nbreAleatoire].mot.split("");
-  lettreDuMot.forEach((elem) => {
-    const lettre = document.createElement("p");
-    document.querySelector(".mots").appendChild(lettre);
-    lettre.innerHTML = elem;
-    lettre.style.color = "white";
-  });
-}
+  if (indice) {
+    indice.innerHTML = `"${listeDeMot[nbreAleatoire].indice}"`;
+    let lettreDuMot = listeDeMot[nbreAleatoire].mot.split("");
+    lettreDuMot.forEach((elem) => {
+      const lettre = document.createElement("p");
+      document.querySelector(".mots").appendChild(lettre);
+      lettre.innerHTML = elem;
+      lettre.style.color = "white";
+    });
+  }
+  
 }
 
-function demarrageJeuNiveau2() {
-    restartTouche();
-  restartMot();
-  nbrEssai = 5
-  nbrVie.innerHTML = nbrEssai;
-  let nbreAleatoire = Math.floor(Math.random() * ListeMotMoyen.length);
-  let indice = document.querySelector(".indice p");
-  if(indice){
-  indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`;
-  let lettreDuMot = ListeMotFacile[nbreAleatoire].mot.split("");
-  lettreDuMot.forEach((elem) => {
-    const lettre = document.createElement("p");
-    document.querySelector(".mots").appendChild(lettre);
-    lettre.innerHTML = elem;
-    lettre.style.color = "white";
-  });
+function timer(){
+    const temps = document.querySelector(".image p");
+    time = temps.innerHTML
+    time --;
+    temps.innerHTML = time;
+    console.log(time);
+    if(time==0){alert('Perdu, trop long');demarrageJeuNiveau("lose")};
 }
-}
+
+
 
