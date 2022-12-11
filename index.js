@@ -11,9 +11,7 @@ const ListeMotMoyen = [
 ];
 
 const btn = document.querySelectorAll(".boutons .btn");
-const paragraphe = document.querySelectorAll(".mots p");
 const nbrVie = document.querySelector(".vie p");
-let nbrEssai = 5;
 let nbrLettreFind = 0;
 
 function restartTouche() {
@@ -29,10 +27,12 @@ function restartMot() {
   paragraphe.forEach((elem) => elem.remove());
 }
 
+
+
 btn.forEach((elem) => {
   elem.addEventListener("click", function () {
     statut = elem.className;
-    if ((statut = "btn inactif")) {
+    if (statut = "btn inactif") {
       elem.className = "btnactif";
 
       const checkLettre = document.querySelectorAll(".mots p");
@@ -48,8 +48,10 @@ btn.forEach((elem) => {
       if (nbrLettreErreur == checkLettre.length) {
         nbrEssai--;
       }
-    } else {
-      elem.className = "btn inactif";
+    } 
+    if(statut = "btnactif") {
+        alert("bouton déjà cliquer")
+        return
     }
 
     nbrVie.innerHTML = nbrEssai;
@@ -74,8 +76,11 @@ btnStart.addEventListener("click", function () {
 function demarrageJeuNiveau1() {
   restartTouche();
   restartMot();
+  nbrEssai = 5
+  nbrVie.innerHTML = nbrEssai;
   let nbreAleatoire = Math.floor(Math.random() * ListeMotFacile.length);
   let indice = document.querySelector(".indice p");
+  if(indice){
   indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`;
   let lettreDuMot = ListeMotFacile[nbreAleatoire].mot.split("");
   lettreDuMot.forEach((elem) => {
@@ -85,7 +90,9 @@ function demarrageJeuNiveau1() {
     lettre.style.color = "White";
   });
 }
+}
 
 function demarrageJeuNiveau2() {
   let nbreAleatoire = Math.floor(Math.random() * ListeMotMoyen.length);
 }
+
