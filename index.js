@@ -12,6 +12,7 @@ const ListeMotMoyen = [
 
 const btn = document.querySelectorAll(".boutons .btn");
 const nbrVie = document.querySelector(".vie p");
+
 let nbrLettreFind = 0;
 
 function restartTouche() {
@@ -49,9 +50,8 @@ btn.forEach((elem) => {
         nbrEssai--;
       }
     } 
-    if(statut = "btnactif") {
+    else if(statut = "btnactif") {
         alert("bouton déjà cliquer")
-        return
     }
 
     nbrVie.innerHTML = nbrEssai;
