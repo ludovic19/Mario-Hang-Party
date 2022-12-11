@@ -2,6 +2,9 @@ const ListeMotFacile = [
   { mot: "CHEVAL", indice: "Animal a sabot" },
   { mot: "SABRE", indice: "Arme tranchante" },
   { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+  { mot: "ORDINATEUR", indice: "Appareil pour coder" },
+  { mot: "CAFE", indice: "Pour rester reveiller" },
+  { mot: "LAMPE", indice: "Pour s'éclairer" },
 ];
 
 const ListeMotMoyen = [
@@ -39,7 +42,7 @@ btn.forEach((elem) => {
       elem.className = "btnactif";
       checkLettre.forEach((element) => {
         if (element.innerHTML == elem.innerHTML) {
-          element.style.visibility = "visible";
+          element.style.color = "black";
         } else {
           nbrLettreErreur++;
         }
@@ -60,9 +63,7 @@ btn.forEach((elem) => {
     }
     let nbrLettreFind=0
     const paragraphe = document.querySelectorAll(".mots p");
-    paragraphe.forEach((elem)=> {if(elem.style.visibility === "visible"){nbrLettreFind++}})
-    console.log(nbrLettreFind)
-    console.log(paragraphe.length)
+    paragraphe.forEach((elem)=> {if(elem.style.color === "black"){nbrLettreFind++}})
     if(nbrLettreFind == paragraphe.length)
     {alert("gagné"); demarrageJeuNiveau2()}
   });
@@ -89,12 +90,27 @@ function demarrageJeuNiveau1() {
     const lettre = document.createElement("p");
     document.querySelector(".mots").appendChild(lettre);
     lettre.innerHTML = elem;
-    lettre.style.visibility = "hidden";
+    lettre.style.color = "white";
   });
 }
 }
 
 function demarrageJeuNiveau2() {
+    restartTouche();
+  restartMot();
+  nbrEssai = 5
+  nbrVie.innerHTML = nbrEssai;
   let nbreAleatoire = Math.floor(Math.random() * ListeMotMoyen.length);
+  let indice = document.querySelector(".indice p");
+  if(indice){
+  indice.innerHTML = `"${ListeMotFacile[nbreAleatoire].indice}"`;
+  let lettreDuMot = ListeMotFacile[nbreAleatoire].mot.split("");
+  lettreDuMot.forEach((elem) => {
+    const lettre = document.createElement("p");
+    document.querySelector(".mots").appendChild(lettre);
+    lettre.innerHTML = elem;
+    lettre.style.color = "white";
+  });
+}
 }
 
