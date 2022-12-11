@@ -17,7 +17,9 @@ const btn = document.querySelectorAll(".boutons .btn");
 const nbrVie = document.querySelector(".vie p");
 
 let nbrLettreFind = 0;
-
+// Fonction qui remet toutes les lettres de l'alphabet à inactif après une partie
+// class btnactif c'est les boutons cliquer
+// class btn inactif c'est les boutons pas encore cliquer
 function restartTouche() {
   btn.forEach((elem) => {
     if (elem.className == "btnactif") {
@@ -26,13 +28,24 @@ function restartTouche() {
   });
 }
 
+
+//Fonction qui supprime le mot existant (la création du nouveau mot est dans la fonction demarrageJeuNiveau)
 function restartMot() {
   const paragraphe = document.querySelectorAll(".mots p");
   paragraphe.forEach((elem) => elem.remove());
 }
 
 
-
+// EventListner sur les btn des lettres de l'alphabet
+// Ca check la class du btn
+// si inactif, il la passe en actif pour la laisser cliquer, si c'est une des lettres du mot il l'a fait apparaitre
+// checkLettre c'est une array des lettres du mot en récupérant les p dans la class .mots
+// le nombre d'essai (nbrEssai) est décrémenté si une erreur
+// l'erreur est detecté quand la taille nbreLettreErreur est pas égal à la taille de l'array Checklettre
+// en gros si ca match avec aucune lettre pour un mot de 5 lettre je dois avoir au moins nbrLettreErreur < 5 ce qui veut dire il a matché une fois
+// sinon c'est que il a pas matché si égal et donc erreur
+// pour savoir si gagné, une boucle passe à chaque clique sur toute les lettres et tant que les lettres ont pas toutes un style.color black ca gagne pas
+// ca perd si  nbrEssai == 0
 btn.forEach((elem) => {
   elem.addEventListener("click", function () {
     statut = elem.className;
@@ -61,6 +74,7 @@ btn.forEach((elem) => {
       alert("Perdu");
       demarrageJeuNiveau1();
     }
+
     let nbrLettreFind=0
     const paragraphe = document.querySelectorAll(".mots p");
     paragraphe.forEach((elem)=> {if(elem.style.color === "black"){nbrLettreFind++}})
@@ -69,6 +83,7 @@ btn.forEach((elem) => {
   });
 });
 
+// Ca c'est pour remove l'encart de démarrage du jeux une fois que l'utilisateur clique sur commencer
 const btnStart = document.querySelector(".begin");
 btnStart.addEventListener("click", function () {
   const sectionStart = document.querySelector(".start");
@@ -76,6 +91,12 @@ btnStart.addEventListener("click", function () {
   demarrageJeuNiveau1();
 });
 
+//Fonction pour démarrer le jeu au niveau 1 avec l'array de mot ListeMotFacile
+// il initialise les vies à 5
+// prend un mot au hasard dans l'array ListeMotFacile
+// Split ce mot ce qui me retourne une nouvelle array LettreduMot
+// et crée un p dans la class .mots avec chaque lettre
+// les lettres ont la color white pour pas les voir pour l'instant (on peut voir pour hidden/visible)
 function demarrageJeuNiveau1() {
   restartTouche();
   restartMot();
