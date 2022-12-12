@@ -4,7 +4,7 @@ const ListeMotFacile = [
   { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
   { mot: "ORDINATEUR", indice: "Appareil pour coder" },
   { mot: "CAFE", indice: "Pour rester reveiller" },
-  { mot: "LAMPE", indice: "Pour s'éclairer" },
+  { mot: "LAMPE", indice: "Pour s'eclairer" },
 ];
 
 const ListeMotMoyen = [
@@ -147,7 +147,7 @@ function demarrageJeuNiveau(winoulose) {
 
 function timer() {
   const temps = document.querySelector(".image p");
-  time = temps.innerHTML;
+  let time = temps.innerHTML;
   time--;
   temps.innerHTML = time;
   console.log(time);
