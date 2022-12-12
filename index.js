@@ -14,13 +14,14 @@ const ListeMotMoyen = [
 ];
 
 const ListeMotDur = [
-    { mot: "ANE", indice: "Animal a sabot" },
-    { mot: "SABRE", indice: "Arme tranchante" },
-    { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
-  ];
-  
+  { mot: "ANE", indice: "Animal a sabot" },
+  { mot: "SABRE", indice: "Arme tranchante" },
+  { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+];
+
 const btn = document.querySelectorAll(".boutons .btn");
-const nbrVie = document.querySelector(".vie p");
+// const nbrVie = document.querySelector(".vie p");
+// const allHearts = document.querySelectorAll(".vie section img");
 const level = document.querySelector(".niveauActuel");
 const temps = document.querySelector(".image p");
 let nbrLettreFind = 0;
@@ -66,29 +67,32 @@ btn.forEach((elem) => {
       });
 
       if (nbrLettreErreur == checkLettre.length) {
-        nbrEssai--;
+        const allHearts = document.querySelectorAll(".vie section img");
+        allHearts[allHearts.length - 1].remove();
+        console.log(allHearts);
       }
-    }
-    if (statut == "btnactif") {
-      alert("bouton déjà cliquer");
-    }
 
-    nbrVie.innerHTML = nbrEssai;
-    if (nbrEssai == 0) {
-      alert("Perdu");
-      demarrageJeuNiveau("lose");
-    }
-
-    let nbrLettreFind = 0;
-    const paragraphe = document.querySelectorAll(".mots p");
-    paragraphe.forEach((elem) => {
-      if (elem.style.color === "black") {
-        nbrLettreFind++;
+      if (statut == "btnactif") {
+        alert("bouton déjà cliquer");
       }
-    });
-    if (nbrLettreFind == paragraphe.length) {
-      alert("gagné");
-      demarrageJeuNiveau("win");
+      const allHearts = document.querySelectorAll(".vie section img");
+
+      if (allHearts.length == 0) {
+        alert("Perdu");
+        demarrageJeuNiveau("lose");
+      }
+
+      let nbrLettreFind = 0;
+      const paragraphe = document.querySelectorAll(".mots p");
+      paragraphe.forEach((elem) => {
+        if (elem.style.color === "black") {
+          nbrLettreFind++;
+        }
+      });
+      if (nbrLettreFind == paragraphe.length) {
+        alert("gagné");
+        demarrageJeuNiveau("win");
+      }
     }
   });
 });
@@ -110,16 +114,23 @@ btnStart.addEventListener("click", function () {
 function demarrageJeuNiveau(winoulose) {
   restartTouche();
   restartMot();
-  nbrEssai = 5;
-  temps.innerHTML = 30
-  setInterval(timer,1000)
-  listeDeMot = ListeMotFacile
-  nbrVie.innerHTML = nbrEssai;
-  if(winoulose == "win"){
-    if (level.innerHTML == 1){listeDeMot = ListeMotMoyen;level.innerHTML = 2}
-    else if (level.innerHTML == 2){listeDeMot = ListeMotDur;level.innerHTML = 3}
+  //   nbrEssai = 5;
+  temps.innerHTML = 30;
+  //   setInterval(timer,1000)
+  listeDeMot = ListeMotFacile;
+  //   nbrVie.innerHTML = nbrEssai;
+  if (winoulose == "win") {
+    if (level.innerHTML == 1) {
+      listeDeMot = ListeMotMoyen;
+      level.innerHTML = 2;
+    } else if (level.innerHTML == 2) {
+      listeDeMot = ListeMotDur;
+      level.innerHTML = 3;
+    }
+  } else {
+    listeDeMot = ListeMotFacile;
+    level.innerHTML = 1;
   }
-  else {listeDeMot = ListeMotFacile;level.innerHTML = 1}
   let nbreAleatoire = Math.floor(Math.random() * listeDeMot.length);
   let indice = document.querySelector(".indice p");
   if (indice) {
@@ -132,17 +143,16 @@ function demarrageJeuNiveau(winoulose) {
       lettre.style.color = "white";
     });
   }
-  
 }
 
-function timer(){
-    const temps = document.querySelector(".image p");
-    time = temps.innerHTML
-    time --;
-    temps.innerHTML = time;
-    console.log(time);
-    if(time==0){alert('Perdu, trop long');demarrageJeuNiveau("lose")};
+function timer() {
+  const temps = document.querySelector(".image p");
+  time = temps.innerHTML;
+  time--;
+  temps.innerHTML = time;
+  console.log(time);
+  if (time == 0) {
+    alert("Perdu, trop long");
+    demarrageJeuNiveau("lose");
+  }
 }
-
-
-
