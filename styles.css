@@ -178,3 +178,11 @@ width: 100%;
     display: flex;
     flex-direction: row;
 }
+
+.nbrvie img {
+    width: 50px;
+}
+
+.musicStart{
+    visibility: hidden;
+}
