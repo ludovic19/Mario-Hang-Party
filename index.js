@@ -19,7 +19,7 @@ if (bonusVie) {
 if (bonusTemps) {
   temps.innerHTML = 50;
 }
-localStorage.clear();
+// localStorage.clear();
 
 const ListeMotFacile = [
   { mot: "CHEVAL", indice: "Animal a sabot" },
@@ -111,10 +111,9 @@ btn.forEach((elem) => {
       }
     }
     if (nbrLettreFind == paragraphe.length) {
-      alert("gagné");
+      win(level.innerHTML);
 
-      localStorage.setItem("niveau", parseInt(level.innerHTML));
-      window.location = "jeux.html";
+      
     }
   });
 });
@@ -125,7 +124,8 @@ btnStart.addEventListener("click", function () {
   const sectionStart = document.querySelector(".start");
   sectionStart.remove();
   musiqueStart.volume = 0.1;
-  musiqueStart.play();
+  // musiqueStart.play();
+
   demarrageJeuNiveau(level.innerHTML);
 });
 
@@ -147,7 +147,7 @@ function demarrageJeuNiveau(niveau) {
   if (niveau == 2) {
     listeDeMot = ListeMotMoyen;
   }
-  if (niveau == 2) {
+  if (niveau == 3) {
     listeDeMot = ListeMotDur;
   }
   let nbreAleatoire = Math.floor(Math.random() * listeDeMot.length);
@@ -183,4 +183,56 @@ function timer() {
     alert("Perdu, trop long");
     demarrageJeuNiveau(1);
   }
+}
+
+function win(niveau){
+  if(niveau == 1){
+  let template = `
+  <div class="nextGame">
+
+  <img class="marioWin" src="./image/mario_run.png" width="20%">
+
+  <section class="bravo">
+  <h1>Bravo, clique sur "OK", un defi t'attend pour un bonus!</h1>
+  <div>
+  <button class="buttonOK" >OK ?</button>
+  </div>
+  </section>
+  </div>
+  `;
+  const div = document.createElement("div");
+    div.className = "win";
+    document.body.querySelector(".jeu").prepend(div);
+    document.querySelector(".win").innerHTML = template;
+    const btnOk = document.querySelector(".buttonOK")
+    btnOk.addEventListener("click", function () {
+      localStorage.setItem("niveau", parseInt(level.innerHTML));
+      window.location = "jeux.html";
+    });
+  }
+  if(niveau == 2){
+    let template = `
+    <div class="nextGame">
+  
+    <img class="marioWin" src="./image/mario_run.png" width="20%">
+  
+    <section class="bravo">
+    <h1>Bravo, apres tant d'effort, clique sur OK pour te detendre!</h1>
+    <div>
+    <button class="buttonOK" >OK ?</button>
+    </div>
+    </section>
+    </div>
+    `;
+    const div = document.createElement("div");
+      div.className = "win";
+      document.body.querySelector(".jeu").prepend(div);
+      document.querySelector(".win").innerHTML = template;
+      const btnOk = document.querySelector(".buttonOK")
+      btnOk.addEventListener("click", function () {
+        localStorage.setItem("niveau", parseInt(level.innerHTML));
+        window.location = "game.html";
+      });
+    }
+   
 }
