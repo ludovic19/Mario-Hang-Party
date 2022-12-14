@@ -1,0 +1,79 @@
+html{
+    background-image: url(./images/backgroundALL.jpg);
+    background-size:cover;
+    overflow:  hidden;
+}
+body{
+    margin: auto;
+    width: 800px;
+    height: 100vh;
+    /* border: solid black 1px;
+    background-color: white; */
+    
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+h1{
+    text-align: center;
+}
+
+.principal{
+    /* margin: auto; */
+    border: red solid 1px;
+    width: 800px;
+    height: 500px;
+    background-color: rgba(244, 169, 169, 0.5);
+    transition: 0.5;
+}
+
+.heroBall{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    width: 30px;
+    height: 30px;
+    background-image: url(./images/ball.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player1, .player2{
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    background-image: url(./images/mario.png) ;
+    background-size:contain;
+    background-repeat: no-repeat;
+    left: 0px;
+    top: 0px;
+}
+.player2{
+    width: 200px;
+    height: 420px;
+    background-image: url(./images/Bowser.png) ;
+
+
+
+}
+.score{
+    display: flex;
+    justify-content: space-between;
+}
+.count1, .count2{
+    overflow: hidden;
+
+    font-size: 72px;
+}
+.count2{
+    overflow: hidden;
+
+}
+
