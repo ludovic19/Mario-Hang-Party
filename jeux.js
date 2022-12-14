@@ -2,7 +2,6 @@ let newNiveau = localStorage.getItem("niveau");
 let value = parseInt(newNiveau);
 value++;
 localStorage.setItem("newNiveau", value);
-console.log(value);
 const tableau = document.querySelector(".tableau");
 const musiqueStart = document.querySelector(".musicStart");
 // musiqueStart.play();
@@ -165,7 +164,7 @@ function checkKey(e) {
     let template = `
         <div class="start">
 
-        <img class="luigiHelp" src="./image/LuigiHelp.png" width="40%">
+        <img class="luigiHelp" src="./image/LuigiHelp.png" width="20%">
 
         <section class="choix">
         <h1>Bravo, Luigi viens vous apportez de l'aide!</h1>
@@ -203,10 +202,11 @@ function timer() {
   time--;
   temps.innerHTML = time;
   if (time == 0) {
+    clearTimeout(chrono)
     let template = `
         <div class="end">
 
-        <img class="luigiNoHelp" src="./image/LuigiNoHelp.png" width="40%">
+        <img class="luigiNoHelp" src="./image/LuigiNoHelp.png" width="20%">
 
         <section class="choix">
         <h1>Dommage, Luigi etait venu vous apportez de l'aide!</h1>

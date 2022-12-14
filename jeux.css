@@ -58,7 +58,7 @@ body {
 .win, .lose{
   position: absolute;
   width: 50%;
-  height: 100%;
+  height: 55%;
   margin: 40px;
   background-color: green;
   justify-content: center;
@@ -83,6 +83,7 @@ body {
 }
 .luigiHelp, .luigiNoHelp{
   float: left;
+ 
 }
 
 .start, .end{
@@ -90,6 +91,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 40px;
 }
 
 .musicStart{
