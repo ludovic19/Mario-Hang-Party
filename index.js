@@ -19,7 +19,7 @@ if (bonusVie) {
 if (bonusTemps) {
   temps.innerHTML = 50;
 }
-// localStorage.clear();
+localStorage.clear();
 
 const ListeMotFacile = [
   { mot: "CHEVAL", indice: "Animal a sabot" },
@@ -124,7 +124,7 @@ btnStart.addEventListener("click", function () {
   const sectionStart = document.querySelector(".start");
   sectionStart.remove();
   musiqueStart.volume = 0.1;
-  // musiqueStart.play();
+  musiqueStart.play();
 
   demarrageJeuNiveau(level.innerHTML);
 });
@@ -139,7 +139,7 @@ btnStart.addEventListener("click", function () {
 function demarrageJeuNiveau(niveau) {
   restartTouche();
   restartMot();
-  //   setInterval(timer,1000)
+    setInterval(timer,1000)
   //   nbrVie.innerHTML = nbrEssai;
   if (niveau == 1) {
     listeDeMot = ListeMotFacile;
