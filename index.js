@@ -63,26 +63,22 @@ function restartMot() {
 
 // EventListner sur les btn des lettres de l'alphabet
 // Ca check la class du btn
-// si inactif, il la passe en actif pour la laisser cliquer, 
-// si c'est une des lettres du mot il l'a fait apparaitre
+// si inactif, il la passe en actif pour la laisser cliquer, si c'est une des lettres du mot il l'a fait apparaitre
 // checkLettre c'est une array des lettres du mot en récupérant les p dans la class .mots
 // le nombre d'essai (nbrEssai) est décrémenté si une erreur
 // l'erreur est detecté quand la taille nbreLettreErreur est pas égal à la taille de l'array Checklettre
-// en gros si ca match avec aucune lettre pour un mot de 5 lettre 
-// je dois avoir au moins nbrLettreErreur < 5 ce qui veut dire il a matché une fois
+// en gros si ca match avec aucune lettre pour un mot de 5 lettre je dois avoir au moins nbrLettreErreur < 5 ce qui veut dire il a matché une fois
 // sinon c'est que il a pas matché si égal et donc erreur
-// pour savoir si gagné, une boucle passe à chaque clique sur toute les lettres 
-// et tant que les lettres ont pas toutes un style.color black ca gagne pas
+// pour savoir si gagné, une boucle passe à chaque clique sur toute les lettres et tant que les lettres ont pas toutes un style.color black ca gagne pas
 // ca perd si  nbrEssai == 0
 btn.forEach((elem) => {
   elem.addEventListener("click", function () {
     statut = elem.className;
     const checkLettre = document.querySelectorAll(".mots p");
     let nbrLettreErreur = 0;
-    
-
     if (statut == "btn inactif") {
       elem.className = "btnactif";
+<<<<<<< HEAD
 <<<<<<< HEAD
     //   myWord.forEach((element) => {
     //     if (element== elem.innerHTML) {
@@ -103,6 +99,8 @@ btn.forEach((elem) => {
         allHearts[allHearts.length - 1].remove();
         
 =======
+=======
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
 
       for (let i = 0; i < myWord.length; i++) {
         if (myWord[i] == elem.innerHTML) {
@@ -110,7 +108,10 @@ btn.forEach((elem) => {
         } else {
           nbrLettreErreur++;
         }
+<<<<<<< HEAD
 >>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
+=======
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
       }
     }
 
@@ -124,6 +125,7 @@ btn.forEach((elem) => {
     }
     const allHearts = document.querySelectorAll(".vie section img");
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       let nbrLettreFind = 0;
       const paragraphe = document.querySelectorAll(".mots p");
@@ -145,6 +147,8 @@ btn.forEach((elem) => {
   );
 })
 =======
+=======
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
     if (allHearts.length == 0) {
       alert("Perdu");
       demarrageJeuNiveau(1);
@@ -164,7 +168,10 @@ btn.forEach((elem) => {
     }
   });
 });
+<<<<<<< HEAD
 >>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
+=======
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
 
 // Ca c'est pour remove l'encart de démarrage du jeux une fois que l'utilisateur clique sur commencer
 const btnStart = document.querySelector(".begin");
@@ -184,12 +191,17 @@ btnStart.addEventListener("click", function () {
 // et crée un p dans la class .mots avec chaque lettre
 // les lettres ont la color white pour pas les voir pour l'instant (on peut voir pour hidden/visible)
 <<<<<<< HEAD
+<<<<<<< HEAD
 let myWord = []
 function demarrageJeuNiveau(winoulose) {
 =======
 
 function demarrageJeuNiveau(niveau) {
 >>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
+=======
+
+function demarrageJeuNiveau(niveau) {
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
   restartTouche();
   restartMot();
     setInterval(timer,1000)
@@ -209,6 +221,7 @@ function demarrageJeuNiveau(niveau) {
     indice.innerHTML = `"${listeDeMot[nbreAleatoire].indice}"`;
     let lettreDuMot = listeDeMot[nbreAleatoire].mot.split("");
 <<<<<<< HEAD
+<<<<<<< HEAD
     myWord=lettreDuMot
 
     //   forEach a remplacer par une boucle for et cacher [0]et[.length-1]
@@ -222,10 +235,15 @@ function demarrageJeuNiveau(niveau) {
     myWord = lettreDuMot;
 
 >>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
+=======
+    myWord = lettreDuMot;
+
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
     for (let i = 0; i < lettreDuMot.length; i++) {
       const lettre = document.createElement("p");
       document.querySelector(".mots").appendChild(lettre);
       lettre.innerHTML = lettreDuMot[i];
+<<<<<<< HEAD
 <<<<<<< HEAD
     //   on affiche 1ere et derniere lettre 
     //   on replace les lettres par des ? (sinon visible dans linspecteur !)
@@ -245,6 +263,8 @@ function demarrageJeuNiveau(niveau) {
        }
       // lettreDuMot[lettreDuMot.length-1].style.visibility == 'visible'
 =======
+=======
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
 
       if (i == 0) {
         lettre.innerHTML = lettreDuMot[i];
@@ -254,10 +274,14 @@ function demarrageJeuNiveau(niveau) {
         const replaceLettre = lettreDuMot[i].replace(lettreDuMot[i], "?");
         lettre.innerHTML = replaceLettre;
       }
+<<<<<<< HEAD
 >>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
+=======
+>>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
     }
   }
 }
+
 function timer() {
   const temps = document.querySelector(".image p");
   let time = temps.innerHTML;
