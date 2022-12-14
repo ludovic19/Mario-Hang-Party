@@ -4,31 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Don't hang Mario !</title>
+    <link rel="shortcut icon" href="./image/mario_run.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+    
  <section class="jeu">
+    <audio class="musicStart" controls autoplay>
+        <source src="./audio/musicPendu.mp3" type="audio/mpeg">
+      </audio>
  <div class="start">
     <img src="./image/marioRunafterPrincess.png" width="20%">
     <section class="presentationStart">
-    <h1>Bienvenue dans le jeu</h1>
-    <p>Ce jeu est un  jeu de réflexion avec un temps imparti, bla bla bla</p>
-    <button class="begin">Start</button>
+    <h1>Bienvenue dans Mario sauve encore Peach</h1>
+    <p>Bowser a de nouveau enlever la princesse Peach!!! A vous de trouver les lettres manquantes de chaque mot pour aider Mario.</p>
+    <button class="begin">Let's Start</button>
     </section>
     <img src="./image/bowserVsprincess.png" width="20%">
 </div>
+<div class="motEtLvl">
+    <p>Mot rechercher :</p>
+    <div class="mots">
+    </div>
+    <div class="vie">
+        <h3>Nombre de vie :</h3>
+        <section class="nbrvie">
+            <img src="./image/gif_Tod.gif" alt="gif Toad">
+            <img src="./image/gif_Tod.gif" alt="gif Toad">
+            <img src="./image/gif_Tod.gif" alt="gif Toad">
+            <img src="./image/gif_Tod.gif" alt="gif Toad">
+            <img src="./image/gif_Tod.gif" alt="gif Toad">
+        </section>
+    </div>
+    <div class="level">
+        <p>Niveau</p> 
+        <p class="niveauActuel">1</p> 
+    </div>
+</div>
     <div class="wrapper">
+        <div class="image">
+            <img class="guillotine" src="./image/Timer Game GIF 2.gif" width="170px">
+            <h2>Temps restants :</h2>
+            <p>30</p>
+        </div>
         <div class="indice">
             <h1>Indice :</h1>
             <p>test</p>
 
         </div>
-        <div class="image">
-            <img class="guillotine" src="./image/Timer Game GIF.gif" width="170px">
-            <h2>Temps restants :</h2>
-            <p>30</p>
-        </div>
+
         <div class="boutons">
             <bouton class="btn inactif">A</bouton>
             <bouton class="btn inactif">B</bouton>
@@ -56,21 +81,6 @@
             <bouton class="btn inactif">X</bouton>
             <bouton class="btn inactif">Y</bouton>
             <bouton class="btn inactif">Z</bouton>
-        </div>
-    </div>
-    <div class="motEtLvl">
-        <div class="mots">
-        </div>
-        <div class="vie">
-            <h3>Nombre de vie :</h3>
-            <p>5</p>
-        </div>
-        <div class="nextLvl">
-            <button class="boutonNextLvl"><img src="./image/mario_run.png" width="30px">next lvl</button>
-        </div>
-        <div class="level">
-            <p>Niveau</p> 
-            <p class="niveauActuel">1</p> 
         </div>
     </div>
 </section>

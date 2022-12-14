@@ -1,10 +1,33 @@
+let newNiveau = localStorage.getItem("newNiveau");
+let bonusVie = localStorage.getItem("newVie");
+let bonusTemps = localStorage.getItem("newTime");
+const level = document.querySelector(".niveauActuel");
+const btn = document.querySelectorAll(".boutons .btn");
+const temps = document.querySelector(".image p");
+let myWord = [];
+const musiqueStart = document.querySelector(".musicStart");
+
+if (newNiveau) {
+  level.innerHTML = newNiveau;
+}
+if (bonusVie) {
+  let img = document.createElement("img");
+  img.src = "./image/gif_Tod.gif";
+  img.width = `${50}px`;
+  document.querySelector(".nbrvie").appendChild(img);
+}
+if (bonusTemps) {
+  temps.innerHTML = 50;
+}
+localStorage.clear();
+
 const ListeMotFacile = [
   { mot: "CHEVAL", indice: "Animal a sabot" },
   { mot: "SABRE", indice: "Arme tranchante" },
   { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
   { mot: "ORDINATEUR", indice: "Appareil pour coder" },
   { mot: "CAFE", indice: "Pour rester reveiller" },
-  { mot: "LAMPE", indice: "Pour s'éclairer" },
+  { mot: "LAMPE", indice: "Pour s'eclairer" },
 ];
 
 const ListeMotMoyen = [
@@ -14,16 +37,14 @@ const ListeMotMoyen = [
 ];
 
 const ListeMotDur = [
-    { mot: "ANE", indice: "Animal a sabot" },
-    { mot: "SABRE", indice: "Arme tranchante" },
-    { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
-  ];
-  
-const btn = document.querySelectorAll(".boutons .btn");
-const nbrVie = document.querySelector(".vie p");
-const level = document.querySelector(".niveauActuel");
-const temps = document.querySelector(".image p");
-let nbrLettreFind = 0;
+  { mot: "ANE", indice: "Animal a sabot" },
+  { mot: "SABRE", indice: "Arme tranchante" },
+  { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+];
+
+// const nbrVie = document.querySelector(".vie p");
+// const allHearts = document.querySelectorAll(".vie section img");
+
 // Fonction qui remet toutes les lettres de l'alphabet à inactif après une partie
 // class btnactif c'est les boutons cliquer
 // class btn inactif c'est les boutons pas encore cliquer
@@ -57,38 +78,42 @@ btn.forEach((elem) => {
     let nbrLettreErreur = 0;
     if (statut == "btn inactif") {
       elem.className = "btnactif";
-      checkLettre.forEach((element) => {
-        if (element.innerHTML == elem.innerHTML) {
-          element.style.color = "black";
+
+      for (let i = 0; i < myWord.length; i++) {
+        if (myWord[i] == elem.innerHTML) {
+          checkLettre[i].innerHTML = myWord[i];
         } else {
           nbrLettreErreur++;
         }
-      });
-
-      if (nbrLettreErreur == checkLettre.length) {
-        nbrEssai--;
       }
     }
+
+    if (nbrLettreErreur == checkLettre.length) {
+      const allHearts = document.querySelectorAll(".vie section img");
+      allHearts[allHearts.length - 1].remove();
+    }
+
     if (statut == "btnactif") {
       alert("bouton déjà cliquer");
     }
+    const allHearts = document.querySelectorAll(".vie section img");
 
-    nbrVie.innerHTML = nbrEssai;
-    if (nbrEssai == 0) {
+    if (allHearts.length == 0) {
       alert("Perdu");
-      demarrageJeuNiveau("lose");
+      demarrageJeuNiveau(1);
     }
 
     let nbrLettreFind = 0;
     const paragraphe = document.querySelectorAll(".mots p");
-    paragraphe.forEach((elem) => {
-      if (elem.style.color === "black") {
+    for (let i = 0; i < paragraphe.length; i++) {
+      if (paragraphe[i].innerHTML == myWord[i]) {
         nbrLettreFind++;
       }
-    });
+    }
     if (nbrLettreFind == paragraphe.length) {
-      alert("gagné");
-      demarrageJeuNiveau("win");
+      win(level.innerHTML);
+
+      
     }
   });
 });
@@ -98,7 +123,10 @@ const btnStart = document.querySelector(".begin");
 btnStart.addEventListener("click", function () {
   const sectionStart = document.querySelector(".start");
   sectionStart.remove();
-  demarrageJeuNiveau("lose");
+  musiqueStart.volume = 0.1;
+  musiqueStart.play();
+
+  demarrageJeuNiveau(level.innerHTML);
 });
 
 //Fonction pour démarrer le jeu au niveau 1 avec l'array de mot ListeMotFacile
@@ -107,42 +135,104 @@ btnStart.addEventListener("click", function () {
 // Split ce mot ce qui me retourne une nouvelle array LettreduMot
 // et crée un p dans la class .mots avec chaque lettre
 // les lettres ont la color white pour pas les voir pour l'instant (on peut voir pour hidden/visible)
-function demarrageJeuNiveau(winoulose) {
+
+function demarrageJeuNiveau(niveau) {
   restartTouche();
   restartMot();
-  nbrEssai = 5;
-  temps.innerHTML = 30
-  setInterval(timer,1000)
-  listeDeMot = ListeMotFacile
-  nbrVie.innerHTML = nbrEssai;
-  if(winoulose == "win"){
-    if (level.innerHTML == 1){listeDeMot = ListeMotMoyen;level.innerHTML = 2}
-    else if (level.innerHTML == 2){listeDeMot = ListeMotDur;level.innerHTML = 3}
+    setInterval(timer,1000)
+  //   nbrVie.innerHTML = nbrEssai;
+  if (niveau == 1) {
+    listeDeMot = ListeMotFacile;
   }
-  else {listeDeMot = ListeMotFacile;level.innerHTML = 1}
+  if (niveau == 2) {
+    listeDeMot = ListeMotMoyen;
+  }
+  if (niveau == 3) {
+    listeDeMot = ListeMotDur;
+  }
   let nbreAleatoire = Math.floor(Math.random() * listeDeMot.length);
   let indice = document.querySelector(".indice p");
   if (indice) {
     indice.innerHTML = `"${listeDeMot[nbreAleatoire].indice}"`;
     let lettreDuMot = listeDeMot[nbreAleatoire].mot.split("");
-    lettreDuMot.forEach((elem) => {
+    myWord = lettreDuMot;
+
+    for (let i = 0; i < lettreDuMot.length; i++) {
       const lettre = document.createElement("p");
       document.querySelector(".mots").appendChild(lettre);
-      lettre.innerHTML = elem;
-      lettre.style.color = "white";
+      lettre.innerHTML = lettreDuMot[i];
+
+      if (i == 0) {
+        lettre.innerHTML = lettreDuMot[i];
+      } else if (i == lettreDuMot.length - 1) {
+        lettre.innerHTML = lettreDuMot[i];
+      } else {
+        const replaceLettre = lettreDuMot[i].replace(lettreDuMot[i], "?");
+        lettre.innerHTML = replaceLettre;
+      }
+    }
+  }
+}
+
+function timer() {
+  const temps = document.querySelector(".image p");
+  let time = temps.innerHTML;
+  time--;
+  temps.innerHTML = time;
+  if (time == 0) {
+    alert("Perdu, trop long");
+    demarrageJeuNiveau(1);
+  }
+}
+
+function win(niveau){
+  if(niveau == 1){
+  let template = `
+  <div class="nextGame">
+
+  <img class="marioWin" src="./image/mario_run.png" width="20%">
+
+  <section class="bravo">
+  <h1>Bravo, clique sur "OK", un defi t'attend pour un bonus!</h1>
+  <div>
+  <button class="buttonOK" >OK ?</button>
+  </div>
+  </section>
+  </div>
+  `;
+  const div = document.createElement("div");
+    div.className = "win";
+    document.body.querySelector(".jeu").prepend(div);
+    document.querySelector(".win").innerHTML = template;
+    const btnOk = document.querySelector(".buttonOK")
+    btnOk.addEventListener("click", function () {
+      localStorage.setItem("niveau", parseInt(level.innerHTML));
+      window.location = "jeux.html";
     });
   }
+  if(niveau == 2){
+    let template = `
+    <div class="nextGame">
   
+    <img class="marioWin" src="./image/mario_run.png" width="20%">
+  
+    <section class="bravo">
+    <h1>Bravo, apres tant d'effort, clique sur OK pour te detendre!</h1>
+    <div>
+    <button class="buttonOK" >OK ?</button>
+    </div>
+    </section>
+    </div>
+    `;
+    const div = document.createElement("div");
+      div.className = "win";
+      document.body.querySelector(".jeu").prepend(div);
+      document.querySelector(".win").innerHTML = template;
+      const btnOk = document.querySelector(".buttonOK")
+      btnOk.addEventListener("click", function () {
+        localStorage.setItem("niveau", parseInt(level.innerHTML));
+        window.location = "game.html";
+      });
+    }
+   
 }
-
-function timer(){
-    const temps = document.querySelector(".image p");
-    time = temps.innerHTML
-    time --;
-    temps.innerHTML = time;
-    console.log(time);
-    if(time==0){alert('Perdu, trop long');demarrageJeuNiveau("lose")};
-}
-
-
-
