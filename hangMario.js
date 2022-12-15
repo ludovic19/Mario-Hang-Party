@@ -48,7 +48,7 @@ const ListeMotFacile = [
 const ListeMotMoyen = [
   { mot: "GITHUB", indice: "Animal a sabot" },
   { mot: "IMPOSSIBLE", indice: "N'est pas Francais" },
-  { mot: "CERF", indice: "Animal à bois" },
+  { mot: "CERF", indice: "Animal a bois" },
   { mot: "HERCULE", indice: "Looser de DBZ" },
   { mot: "BATMAN", indice: "Heros de la nuit" },
   { mot: "ETHEREUM", indice: "Blockchain" },
@@ -69,7 +69,7 @@ const ListeMotDur = [
   { mot: "CACAHUETE", indice: "Apero" },
   { mot: "THERMOS", indice: "Reste chaud" },
   { mot: "SEISME", indice: "Secousse" },
-  { mot: "PHOENIX", indice: "Après les cendres..." },
+  { mot: "PHOENIX", indice: "Apres les cendres..." },
 ];
 
 // Fonction qui remet toutes les lettres de l'alphabet à inactif après une partie

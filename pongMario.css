@@ -59,3 +59,31 @@ h1 {
 
   font-size: 72px;
 }
+
+.lose{
+  position: absolute;
+  width: 50%;
+  height: 55%;
+  margin: 40px;
+  background-color: green;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  border: black solid 2px;
+  border-radius: 15px;
+}
+
+.buttonChoix {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.retourpendu{
+  background-color: orange;
+}
+
+.musicStart{
+  visibility: hidden;
+}
