@@ -2,6 +2,11 @@ let newNiveau = localStorage.getItem("niveau");
 let value = parseInt(newNiveau);
 value++;
 localStorage.setItem("newNiveau", value);
+const musiqueStart = document.querySelector(".musicStart");
+window.addEventListener("keydown", (event) => {
+  musiqueStart.volume = 0.1;
+  musiqueStart.play();
+});
 
 //x et y - les coordonnées de la ball dans l'axe vertical et horisontal
 let x, y;
@@ -84,12 +89,53 @@ function loose(n) {
   if (n == 2) count1.innerHTML = parseInt(count1.innerHTML) + 1;
 
   if (count1.innerHTML === "3") {
-    alert("Mario Win !");
+    let template = `
+        <div class="end">
+
+        <img class="luigiNoHelp" src="./image/LuigiNoHelp.png" width="20%">
+
+        <section class="choix">
+        <h1>Bravo, retourne affronter Bowser pour la dernière manche!</h1>
+        <div class="buttonChoix">
+        <button class="retourpendu">Continue</button>
+        </div>
+        </section>
+        </div>
+        `;
+    const div = document.createElement("div");
+    div.className = "lose";
+    document.body.prepend(div);
+    document.querySelector(".lose").innerHTML = template;
+  
+  const buttonRetour = document.querySelector(".retourpendu");
+  buttonRetour.addEventListener("click", function () {
     window.location = "hangMario.html";
+  });
+
   }
   if (count2.innerHTML === "3") {
-    alert("Mario lose... BOWSER IS A WINNER !!!");
-    window.location = "hangMario.html";
+
+    let template = `
+        <div class="end">
+
+        <img class="luigiNoHelp" src="./image/LuigiNoHelp.png" width="20%">
+
+        <section class="choix">
+        <h1>Dommage, tente te chance une prochaine fois!</h1>
+        <div class="buttonChoix">
+        <button class="retourpendu">Continue</button>
+        </div>
+        </section>
+        </div>
+        `;
+    const div = document.createElement("div");
+    div.className = "lose";
+    document.body.prepend(div);
+    document.querySelector(".lose").innerHTML = template;
+  
+  const buttonRetour = document.querySelector(".retourpendu");
+  buttonRetour.addEventListener("click", function () {
+    window.location = "hangMario.html";})
   }
 }
 
