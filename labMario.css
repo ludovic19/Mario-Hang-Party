@@ -1,0 +1,99 @@
+@font-face {
+  src: url("./image/04B_30__.TTF");
+  font-family: "mario";
+}
+* {
+  font-family: "mario";
+}
+
+th,
+td {
+  padding: 30px;
+  background-color: black;
+  border: white solid 1px;
+}
+
+.tableau {
+  position: relative;
+}
+
+.compteur{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.compteur p{
+    font-size: 20px;
+}
+
+.jeu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 200px;
+}
+
+.instruction {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  gap: 50px;
+}
+
+.timer {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+body {
+  background-image: url("./image/backgroundJeuPlateforme.jpg");
+  position: relative;
+  background-size: auto;
+}
+
+.win, .lose{
+  position: absolute;
+  width: 50%;
+  height: 55%;
+  margin: 40px;
+  background-color: green;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+  border: black solid 2px;
+  border-radius: 15px;
+}
+
+.vie, .temps, .retourpendu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+}
+
+.buttonChoix {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+.luigiHelp, .luigiNoHelp{
+  float: left;
+ 
+}
+
+.start, .end{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.musicStart{
+    visibility: hidden;
+}
