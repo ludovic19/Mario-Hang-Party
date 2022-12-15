@@ -204,12 +204,12 @@ function checkKey(e) {
 
     buttonVie.addEventListener("click", function () {
       localStorage.setItem("newVie", true);
-      window.location = "hangMario.html";
+      window.location = "index.html";
     });
 
     buttonTemps.addEventListener("click", function () {
       localStorage.setItem("newTime", true);
-      window.location = "hangMario.html";
+      window.location = "index.html";
     });
   }
 }
@@ -242,6 +242,6 @@ function timer() {
   }
   const buttonRetour = document.querySelector(".retourpendu");
   buttonRetour.addEventListener("click", function () {
-    window.location = "hangMario.html";
+    window.location = "index.html";
   });
 }
