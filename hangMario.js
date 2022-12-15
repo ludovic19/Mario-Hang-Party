@@ -19,31 +19,58 @@ if (bonusVie) {
 if (bonusTemps) {
   temps.innerHTML = 50;
 }
+
+if (level.innerHTML != 1) {
+  let h1Start = document.querySelector(".start h1");
+  let pStart = document.querySelector(".start p");
+
+  h1Start.innerHTML = "C'est partie pour la prochaine manche";
+  pStart.innerHTML = "Quand tu es pret, clique sur Let's Start";
+}
+
 localStorage.clear();
 
 const ListeMotFacile = [
-  { mot: "CHEVAL", indice: "Animal a sabot" },
-  { mot: "SABRE", indice: "Arme tranchante" },
+  { mot: "NARUTO", indice: "Manga a la mode" },
+  { mot: "YOSHI", indice: "Compagnon de Mario" },
   { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
   { mot: "ORDINATEUR", indice: "Appareil pour coder" },
   { mot: "CAFE", indice: "Pour rester reveiller" },
-  { mot: "LAMPE", indice: "Pour s'eclairer" },
+  { mot: "LAMPE", indice: "Aladin" },
+  { mot: "CHEVAL", indice: "Animal a sabot" },
+  { mot: "SABRE", indice: "Arme tranchante" },
+  { mot: "SANGOKU", indice: "Kamehameha" },
+  { mot: "PYRAMIDE", indice: "Egypte" },
+  { mot: "TITANIC", indice: "Insubmersible" },
+  { mot: "CORONAVIRUS", indice: "Virus" },
 ];
 
 const ListeMotMoyen = [
-  { mot: "CHEVAL", indice: "Animal a sabot" },
-  { mot: "SABRE", indice: "Arme tranchante" },
-  { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+  { mot: "GITHUB", indice: "Animal a sabot" },
+  { mot: "IMPOSSIBLE", indice: "N'est pas Francais" },
+  { mot: "CERF", indice: "Animal à bois" },
+  { mot: "HERCULE", indice: "Looser de DBZ" },
+  { mot: "BATMAN", indice: "Heros de la nuit" },
+  { mot: "ETHEREUM", indice: "Blockchain" },
+  { mot: "DECATHLON", indice: "A fond la forme" },
+  { mot: "IRONHACK", indice: "Meilleur Bootcamp 2022" },
+  { mot: "DAHMER", indice: "Tueur en serie" },
+  { mot: "NEYMAR", indice: "J'en ..." },
+  { mot: "NOTE", indice: "Resultat" },
+  { mot: "ARBITRE", indice: "Persone detestee dans le sport" },
 ];
 
 const ListeMotDur = [
-  { mot: "ANE", indice: "Animal a sabot" },
-  { mot: "SABRE", indice: "Arme tranchante" },
-  { mot: "CHIEN", indice: "Meilleur ami de l'homme" },
+  { mot: "INSUBMERSIBLE", indice: "Titanic" },
+  { mot: "GITHUB", indice: "Versioning" },
+  { mot: "AVIRON", indice: "Sport a rame" },
+  { mot: "EVIDENT", indice: "Ca coule de source" },
+  { mot: "APOCALYPSE", indice: "C'est la fin..." },
+  { mot: "CACAHUETE", indice: "Apero" },
+  { mot: "THERMOS", indice: "Reste chaud" },
+  { mot: "SEISME", indice: "Secousse" },
+  { mot: "PHOENIX", indice: "Après les cendres..." },
 ];
-
-// const nbrVie = document.querySelector(".vie p");
-// const allHearts = document.querySelectorAll(".vie section img");
 
 // Fonction qui remet toutes les lettres de l'alphabet à inactif après une partie
 // class btnactif c'est les boutons cliquer
@@ -89,18 +116,17 @@ btn.forEach((elem) => {
     }
 
     if (nbrLettreErreur == checkLettre.length) {
-      const allHearts = document.querySelectorAll(".vie section img");
-      allHearts[allHearts.length - 1].remove();
+      const marioLive = document.querySelectorAll(".vie section img");
+      marioLive[marioLive.length - 1].remove();
     }
 
     if (statut == "btnactif") {
       alert("bouton déjà cliquer");
     }
-    const allHearts = document.querySelectorAll(".vie section img");
+    const marioLive = document.querySelectorAll(".vie section img");
 
-    if (allHearts.length == 0) {
-      alert("Perdu");
-      demarrageJeuNiveau(1);
+    if (marioLive.length == 0) {
+      lose();
     }
 
     let nbrLettreFind = 0;
@@ -112,8 +138,6 @@ btn.forEach((elem) => {
     }
     if (nbrLettreFind == paragraphe.length) {
       win(level.innerHTML);
-
-      
     }
   });
 });
@@ -133,14 +157,13 @@ btnStart.addEventListener("click", function () {
 // il initialise les vies à 5
 // prend un mot au hasard dans l'array ListeMotFacile
 // Split ce mot ce qui me retourne une nouvelle array LettreduMot
-// et crée un p dans la class .mots avec chaque lettre
+// et crée un p dans la class .mots avec chaqniveauue lettre
 // les lettres ont la color white pour pas les voir pour l'instant (on peut voir pour hidden/visible)
 
 function demarrageJeuNiveau(niveau) {
   restartTouche();
   restartMot();
-    setInterval(timer,1000)
-  //   nbrVie.innerHTML = nbrEssai;
+  setInterval(timer, 1000);
   if (niveau == 1) {
     listeDeMot = ListeMotFacile;
   }
@@ -180,14 +203,13 @@ function timer() {
   time--;
   temps.innerHTML = time;
   if (time == 0) {
-    alert("Perdu, trop long");
-    demarrageJeuNiveau(1);
+    lose();
   }
 }
 
-function win(niveau){
-  if(niveau == 1){
-  let template = `
+function win(niveau) {
+  if (niveau == 1) {
+    let template = `
   <div class="nextGame">
 
   <img class="marioWin" src="./image/mario_run.png" width="20%">
@@ -200,17 +222,17 @@ function win(niveau){
   </section>
   </div>
   `;
-  const div = document.createElement("div");
+    const div = document.createElement("div");
     div.className = "win";
     document.body.querySelector(".jeu").prepend(div);
     document.querySelector(".win").innerHTML = template;
-    const btnOk = document.querySelector(".buttonOK")
+    const btnOk = document.querySelector(".buttonOK");
     btnOk.addEventListener("click", function () {
       localStorage.setItem("niveau", parseInt(level.innerHTML));
-      window.location = "jeux.html";
+      window.location = "labMario.html";
     });
   }
-  if(niveau == 2){
+  if (niveau == 2) {
     let template = `
     <div class="nextGame">
   
@@ -225,14 +247,54 @@ function win(niveau){
     </div>
     `;
     const div = document.createElement("div");
-      div.className = "win";
-      document.body.querySelector(".jeu").prepend(div);
-      document.querySelector(".win").innerHTML = template;
-      const btnOk = document.querySelector(".buttonOK")
-      btnOk.addEventListener("click", function () {
-        localStorage.setItem("niveau", parseInt(level.innerHTML));
-        window.location = "game.html";
-      });
-    }
-   
+    div.className = "win";
+    document.body.querySelector(".jeu").prepend(div);
+    document.querySelector(".win").innerHTML = template;
+    const btnOk = document.querySelector(".buttonOK");
+    btnOk.addEventListener("click", function () {
+      localStorage.setItem("niveau", parseInt(level.innerHTML));
+      window.location = "pongMario.html";
+    });
+  }
+  if (niveau == 3) {
+    let template = `
+      <div class="nextGame">
+      <section class="bravo">
+      <h1>Bravo, tu as GAGNE, Peach est liberee!</h1>
+      <div>
+      <button class="buttonFinGame" >Recommencer le jeu</button>
+      </div>
+      </section>
+      </div>
+      `;
+    const div = document.createElement("div");
+    div.className = "finGame";
+    document.body.querySelector(".jeu").prepend(div);
+    document.querySelector(".finGame").innerHTML = template;
+    const btnOk = document.querySelector(".buttonFinGame");
+    btnOk.addEventListener("click", function () {
+      localStorage.clear();
+      window.location = "hangMario.html";
+    });
+  }
+}
+
+function lose() {
+  let template = `
+  <div class="nextGame">
+  <h1>GAME OVER</h1>
+  <div>
+  <button class="buttonOK" > Restart OK ?</button>
+  </div>
+  </div>
+  `;
+  const div = document.createElement("div");
+  div.className = "lose";
+  document.body.querySelector(".jeu").prepend(div);
+  document.querySelector(".lose").innerHTML = template;
+  const btnOk = document.querySelector(".buttonOK");
+  btnOk.addEventListener("click", function () {
+    localStorage.clear();
+    window.location = "hangMario.html";
+  });
 }

@@ -1,0 +1,61 @@
+@font-face {
+  src: url("./image/04B_30__.TTF");
+  font-family: "mario";
+}
+* {
+  font-family: "mario";
+}
+
+html {
+  background-image: url(./image/backgroundALL.jpg);
+  background-size: cover;
+  overflow: hidden;
+}
+body {
+  margin: auto;
+  width: 800px;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+.heroBall {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  background-image: url(./image/ball.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+.player1,
+.player2 {
+  position: absolute;
+  width: 100px;
+  height: 120px;
+  background-image: url(./image/mario.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  left: 0px;
+  top: 0px;
+}
+.player2 {
+  width: 200px;
+  height: 420px;
+  background-image: url(./image/Bowser.png);
+}
+.score {
+  display: flex;
+  justify-content: space-between;
+}
+.count1,
+.count2 {
+  overflow: hidden;
+
+  font-size: 72px;
+}
