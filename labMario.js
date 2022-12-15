@@ -4,13 +4,11 @@ value++;
 localStorage.setItem("newNiveau", value);
 const tableau = document.querySelector(".tableau");
 const musiqueStart = document.querySelector(".musicStart");
-// musiqueStart.play();
-window.addEventListener("keydown", event => {
-    musiqueStart.volume = 0.1;
-    musiqueStart.play();
-    
-  });
-  
+
+window.addEventListener("keydown", (event) => {
+  musiqueStart.volume = 0.1;
+  musiqueStart.play();
+});
 
 function addLigne() {
   const ligne = document.createElement("tr");
@@ -74,36 +72,56 @@ placementInitialChateau.style.backgroundSize = "60px";
 //   }
 // }
 // const ligne = document.querySelectorAll(".ligne")
-const briqueLigne0 = [3,4]
-const colbriqueLigne0 = ligne[0].querySelectorAll(".col")
-briqueLigne0.forEach((elem)=> {colbriqueLigne0[elem].style.backgroundColor = "orange";})
-const briqueLigne1 = [1,2,6,7]
-const colbriqueLigne1 = ligne[1].querySelectorAll(".col")
-briqueLigne1.forEach((elem)=> {colbriqueLigne1[elem].style.backgroundColor = "orange";})
-const briqueLigne2 = [1,4,5,9]
-const colbriqueLigne2 = ligne[2].querySelectorAll(".col")
-briqueLigne2.forEach((elem)=> {colbriqueLigne2[elem].style.backgroundColor = "orange";})
-const briqueLigne3 = [3,7,8,9]
-const colbriqueLigne3 = ligne[3].querySelectorAll(".col")
-briqueLigne3.forEach((elem)=> {colbriqueLigne3[elem].style.backgroundColor = "orange";})
-const briqueLigne4 = [0,2,6]
-const colbriqueLigne4 = ligne[4].querySelectorAll(".col")
-briqueLigne4.forEach((elem)=> {colbriqueLigne4[elem].style.backgroundColor = "orange";})
-const briqueLigne5 = [0,3,5,6,8,9]
-const colbriqueLigne5 = ligne[5].querySelectorAll(".col")
-briqueLigne5.forEach((elem)=> {colbriqueLigne5[elem].style.backgroundColor = "orange";})
-const briqueLigne6 = [1,4]
-const colbriqueLigne6 = ligne[6].querySelectorAll(".col")
-briqueLigne6.forEach((elem)=> {colbriqueLigne6[elem].style.backgroundColor = "orange";})
-const briqueLigne7 = [3,7,9]
-const colbriqueLigne7 = ligne[7].querySelectorAll(".col")
-briqueLigne7.forEach((elem)=> {colbriqueLigne7[elem].style.backgroundColor = "orange";})
-const briqueLigne8 = [0,2,3,6,7,9]
-const colbriqueLigne8 = ligne[8].querySelectorAll(".col")
-briqueLigne8.forEach((elem)=> {colbriqueLigne8[elem].style.backgroundColor = "orange";})
-const briqueLigne9 = [5]
-const colbriqueLigne9 = ligne[9].querySelectorAll(".col")
-briqueLigne9.forEach((elem)=> {colbriqueLigne9[elem].style.backgroundColor = "orange";})
+const briqueLigne0 = [3, 4];
+const colbriqueLigne0 = ligne[0].querySelectorAll(".col");
+briqueLigne0.forEach((elem) => {
+  colbriqueLigne0[elem].style.backgroundColor = "orange";
+});
+const briqueLigne1 = [1, 2, 6, 7];
+const colbriqueLigne1 = ligne[1].querySelectorAll(".col");
+briqueLigne1.forEach((elem) => {
+  colbriqueLigne1[elem].style.backgroundColor = "orange";
+});
+const briqueLigne2 = [1, 4, 5, 9];
+const colbriqueLigne2 = ligne[2].querySelectorAll(".col");
+briqueLigne2.forEach((elem) => {
+  colbriqueLigne2[elem].style.backgroundColor = "orange";
+});
+const briqueLigne3 = [3, 7, 8, 9];
+const colbriqueLigne3 = ligne[3].querySelectorAll(".col");
+briqueLigne3.forEach((elem) => {
+  colbriqueLigne3[elem].style.backgroundColor = "orange";
+});
+const briqueLigne4 = [0, 2, 6];
+const colbriqueLigne4 = ligne[4].querySelectorAll(".col");
+briqueLigne4.forEach((elem) => {
+  colbriqueLigne4[elem].style.backgroundColor = "orange";
+});
+const briqueLigne5 = [0, 3, 5, 6, 8, 9];
+const colbriqueLigne5 = ligne[5].querySelectorAll(".col");
+briqueLigne5.forEach((elem) => {
+  colbriqueLigne5[elem].style.backgroundColor = "orange";
+});
+const briqueLigne6 = [1, 4];
+const colbriqueLigne6 = ligne[6].querySelectorAll(".col");
+briqueLigne6.forEach((elem) => {
+  colbriqueLigne6[elem].style.backgroundColor = "orange";
+});
+const briqueLigne7 = [3, 7, 9];
+const colbriqueLigne7 = ligne[7].querySelectorAll(".col");
+briqueLigne7.forEach((elem) => {
+  colbriqueLigne7[elem].style.backgroundColor = "orange";
+});
+const briqueLigne8 = [0, 2, 3, 6, 7, 9];
+const colbriqueLigne8 = ligne[8].querySelectorAll(".col");
+briqueLigne8.forEach((elem) => {
+  colbriqueLigne8[elem].style.backgroundColor = "orange";
+});
+const briqueLigne9 = [5];
+const colbriqueLigne9 = ligne[9].querySelectorAll(".col");
+briqueLigne9.forEach((elem) => {
+  colbriqueLigne9[elem].style.backgroundColor = "orange";
+});
 
 const chrono = setInterval(timer, 1000);
 
@@ -159,8 +177,8 @@ function checkKey(e) {
   const colLigneActuel = ligne[i].querySelectorAll(".col");
 
   if (colLigneActuel[j] == placementInitialChateau) {
-    clearTimeout(chrono)
-    musiqueStart.pause()
+    clearTimeout(chrono);
+    musiqueStart.pause();
     let template = `
         <div class="start">
 
@@ -186,12 +204,12 @@ function checkKey(e) {
 
     buttonVie.addEventListener("click", function () {
       localStorage.setItem("newVie", true);
-      window.location = "index.html";
+      window.location = "hangMario.html";
     });
 
     buttonTemps.addEventListener("click", function () {
       localStorage.setItem("newTime", true);
-      window.location = "index.html";
+      window.location = "hangMario.html";
     });
   }
 }
@@ -202,7 +220,7 @@ function timer() {
   time--;
   temps.innerHTML = time;
   if (time == 0) {
-    clearTimeout(chrono)
+    clearTimeout(chrono);
     let template = `
         <div class="end">
 
@@ -224,6 +242,6 @@ function timer() {
   }
   const buttonRetour = document.querySelector(".retourpendu");
   buttonRetour.addEventListener("click", function () {
-    window.location = "index.html";
+    window.location = "hangMario.html";
   });
 }
