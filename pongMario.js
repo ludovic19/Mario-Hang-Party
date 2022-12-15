@@ -109,7 +109,7 @@ function loose(n) {
   
   const buttonRetour = document.querySelector(".retourpendu");
   buttonRetour.addEventListener("click", function () {
-    window.location = "hangMario.html";
+    window.location = "index.html";
   });
 
   }
@@ -135,7 +135,7 @@ function loose(n) {
   
   const buttonRetour = document.querySelector(".retourpendu");
   buttonRetour.addEventListener("click", function () {
-    window.location = "hangMario.html";})
+    window.location = "index.html";})
   }
 }
 
