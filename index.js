@@ -78,29 +78,6 @@ btn.forEach((elem) => {
     let nbrLettreErreur = 0;
     if (statut == "btn inactif") {
       elem.className = "btnactif";
-<<<<<<< HEAD
-<<<<<<< HEAD
-    //   myWord.forEach((element) => {
-    //     if (element== elem.innerHTML) {
-    //       element;
-        // } else {
-        for (let i=0; i<myWord.length; i++){
-            if(myWord[i]==elem.innerHTML){
-                checkLettre[i].innerHTML=myWord[i]
-            }
-            else{nbrLettreErreur++}
-        }
-          
-        }
-      
-
-      if (nbrLettreErreur == checkLettre.length) {
-        const allHearts = document.querySelectorAll(".vie section img");
-        allHearts[allHearts.length - 1].remove();
-        
-=======
-=======
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
 
       for (let i = 0; i < myWord.length; i++) {
         if (myWord[i] == elem.innerHTML) {
@@ -108,10 +85,6 @@ btn.forEach((elem) => {
         } else {
           nbrLettreErreur++;
         }
-<<<<<<< HEAD
->>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
-=======
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
       }
     }
 
@@ -125,30 +98,6 @@ btn.forEach((elem) => {
     }
     const allHearts = document.querySelectorAll(".vie section img");
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-      let nbrLettreFind = 0;
-      const paragraphe = document.querySelectorAll(".mots p");
-      for(let i=0; i<paragraphe.length; i++){
-        if (paragraphe[i].innerHTML==myWord[i]) {
-        
-          nbrLettreFind++;
-        }
-        else{
-            // console.log(paragraphe[i].inner)
-            // console.log(myWord[i])
-        }
-      };
-      if (nbrLettreFind == paragraphe.length) {
-        alert("gagné");
-        demarrageJeuNiveau("win");
-      }
-    }
-  );
-})
-=======
-=======
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
     if (allHearts.length == 0) {
       alert("Perdu");
       demarrageJeuNiveau(1);
@@ -168,10 +117,6 @@ btn.forEach((elem) => {
     }
   });
 });
-<<<<<<< HEAD
->>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
-=======
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
 
 // Ca c'est pour remove l'encart de démarrage du jeux une fois que l'utilisateur clique sur commencer
 const btnStart = document.querySelector(".begin");
@@ -190,18 +135,8 @@ btnStart.addEventListener("click", function () {
 // Split ce mot ce qui me retourne une nouvelle array LettreduMot
 // et crée un p dans la class .mots avec chaque lettre
 // les lettres ont la color white pour pas les voir pour l'instant (on peut voir pour hidden/visible)
-<<<<<<< HEAD
-<<<<<<< HEAD
-let myWord = []
-function demarrageJeuNiveau(winoulose) {
-=======
 
 function demarrageJeuNiveau(niveau) {
->>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
-=======
-
-function demarrageJeuNiveau(niveau) {
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
   restartTouche();
   restartMot();
     setInterval(timer,1000)
@@ -220,51 +155,12 @@ function demarrageJeuNiveau(niveau) {
   if (indice) {
     indice.innerHTML = `"${listeDeMot[nbreAleatoire].indice}"`;
     let lettreDuMot = listeDeMot[nbreAleatoire].mot.split("");
-<<<<<<< HEAD
-<<<<<<< HEAD
-    myWord=lettreDuMot
-
-    //   forEach a remplacer par une boucle for et cacher [0]et[.length-1]
-    //   creer une const qui va créer des<p> pour chaque lettre
-    //   const lettre = document.createElement("p");
-    //   ajouter lettre au parent div.mots
-    //   document.querySelector(".mots").appendChild(lettre);
-    //   lettre.innerHTML pour inserer la valeur dans le html
-    //   boucler dans le tableau lettreDuMot qui crée a chaque fois un p dans la div parent
-=======
     myWord = lettreDuMot;
 
->>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
-=======
-    myWord = lettreDuMot;
-
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
     for (let i = 0; i < lettreDuMot.length; i++) {
       const lettre = document.createElement("p");
       document.querySelector(".mots").appendChild(lettre);
       lettre.innerHTML = lettreDuMot[i];
-<<<<<<< HEAD
-<<<<<<< HEAD
-    //   on affiche 1ere et derniere lettre 
-    //   on replace les lettres par des ? (sinon visible dans linspecteur !)
-//  faire un switch ?? 
-       if (i == 0) {
-        lettre.innerHTML = lettreDuMot[i]
-
-       }else if(i == lettreDuMot.length - 1){
-         lettre.innerHTML = lettreDuMot[i]
-         
-       } 
-       else {
-        const replaceLettre= lettreDuMot[i].replace(lettreDuMot[i],'?')
-         lettre.innerHTML = replaceLettre;
-         
-
-       }
-      // lettreDuMot[lettreDuMot.length-1].style.visibility == 'visible'
-=======
-=======
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
 
       if (i == 0) {
         lettre.innerHTML = lettreDuMot[i];
@@ -274,10 +170,6 @@ function demarrageJeuNiveau(niveau) {
         const replaceLettre = lettreDuMot[i].replace(lettreDuMot[i], "?");
         lettre.innerHTML = replaceLettre;
       }
-<<<<<<< HEAD
->>>>>>> 1f4ed8f491f542424585e0394d5a8b475d846991
-=======
->>>>>>> 1b9e13ae5e67a69cc30ebfaa57970c956787e461
     }
   }
 }
