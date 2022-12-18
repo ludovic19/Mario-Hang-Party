@@ -239,7 +239,7 @@ function win(niveau) {
     <img class="marioWin" src="./image/mario_run.png" width="20%">
   
     <section class="bravo">
-    <h1>Bravo, apres tant d'effort, clique sur OK pour te detendre!</h1>
+    <h1>Attention! Bowser te lance un défi... rejoins le sur le terrain de pong</h1>
     <div>
     <button class="buttonOK" >OK ?</button>
     </div>
@@ -274,7 +274,7 @@ function win(niveau) {
     const btnOk = document.querySelector(".buttonFinGame");
     btnOk.addEventListener("click", function () {
       localStorage.clear();
-      window.location = "hangMario.html";
+      window.location = "index.html";
     });
   }
 }
@@ -295,6 +295,6 @@ function lose() {
   const btnOk = document.querySelector(".buttonOK");
   btnOk.addEventListener("click", function () {
     localStorage.clear();
-    window.location = "hangMario.html";
+    window.location = "index.html";
   });
 }
